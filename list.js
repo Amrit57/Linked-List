@@ -1,7 +1,7 @@
 class LinkedList {
     constructor() {
         this.head = null;
-        this.size = 0;
+        this.size = -1;
     }
 
     prepend(data) {
@@ -56,7 +56,7 @@ class LinkedList {
     }
     findAtIndex(index) {
         let current = this.head;
-        if (index < 0 || index >= this.size) return console.log("Invalid: Index Not found")
+        if (index < 0 || index > this.size) return console.log("Invalid: Index Not found")
         if (index == 0) return console.log(current.value);
         for (let i = 0; i < index; i++) {
             current = current.nextNode;
@@ -109,6 +109,7 @@ class LinkedList {
             current = current.nextNode;
         }
         prev.nextNode = new Node(value, current);
+        this.size++
     }
 
     removeAt(index) {
@@ -122,6 +123,7 @@ class LinkedList {
                 current = current.nextNode;
             }
             prev.nextNode = current.nextNode;
+            this.size--;
         }
     }
 }
@@ -138,14 +140,14 @@ list.prepend(500)
 list.prepend(400)
 list.prepend(300)
 list.append(600)
-// list.append(700)
-// list.listSize()
-// list.listHead()
-// list.listTail()
-// list.findAtIndex()
-// list.pop()
-// list.contains(500)
-// list.find(500)
-// list.insertAt(800, 2)
-// list.removeAt(3)
+list.append(700)
+list.listHead()
+list.listTail()
+list.findAtIndex(4)
+list.pop()
+list.contains(500)
+list.find(500)
+list.insertAt(800, 2)
+list.removeAt(3)
 list.toString()
+list.listSize()
