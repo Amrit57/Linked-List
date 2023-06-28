@@ -98,6 +98,32 @@ class LinkedList {
         }
         return console.log("Not found")
     }
+
+    insertAt(value, index) {
+        let current = this.head
+        let prev = null;
+        if (index < 0 || index > this.size) return console.log("Invalid Index Number");
+        if (index === 0) return this.head = new Node(value, this.head)
+        for (let i = 0; i < index; i++) {
+            prev = current;
+            current = current.nextNode;
+        }
+        prev.nextNode = new Node(value, current);
+    }
+
+    removeAt(index) {
+        if (index < 0 || index > this.size) return console.log("Invalid Index Number")
+        if (index === 0) this.head = this.head.nextNode
+        else {
+            let current = this.head;
+            let prev = null;
+            for (let i = 0; i < index; i++) {
+                prev = current;
+                current = current.nextNode;
+            }
+            prev.nextNode = current.nextNode;
+        }
+    }
 }
 
 class Node {
@@ -119,5 +145,7 @@ list.append(600)
 // list.findAtIndex()
 // list.pop()
 // list.contains(500)
-list.find(700)
+// list.find(500)
+// list.insertAt(800, 2)
+// list.removeAt(3)
 list.toString()
